@@ -8,5 +8,8 @@
     - name: say hello
       condition: event.payload.message == "Ansible is cool"
       action:
-        run_playbook:
-          name: say-what.yml
+        run_job_template:
+          name: "test-playbook" # awx/aap name job template
+          organization: "Default"
+        #run_playbook:
+         # name: say-what.yml
