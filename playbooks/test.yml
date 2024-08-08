@@ -1,0 +1,6 @@
+- name: say thanks
+  hosts: localhost
+  gather_facts: false
+  tasks: 
+    - debug:
+        msg: "Thank you i am say-waht"

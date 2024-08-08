@@ -1,12 +1,12 @@
----
-- name: Hello Controller Rulebook
-  hosts: localhost
-  gather_facts: false
-
+- name: Listen vents on a webhook
+  hosts: all
+  sources:
+    - ansible.eda.webhook:
+        host: 0.0.0.0
+        port: 5000
   rules:
-    - name: Print Hello Controller
-      condition: event == "trigger"
-      actions:
-        - run: ansible.builtin.debug
-          args:
-            msg: "Hello Controller"
+    - name: say hello
+      condition: event.payload.message == "Ansible is cool"
+      action:
+        run_playbook:
+          name: say-what.yml
