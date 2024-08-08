@@ -1,0 +1,12 @@
+---
+- name: Hello Controller Rulebook
+  hosts: localhost
+  gather_facts: false
+
+  rules:
+    - name: Print Hello Controller
+      condition: event == "trigger"
+      actions:
+        - run: ansible.builtin.debug
+          args:
+            msg: "Hello Controller"
