@@ -11,5 +11,17 @@
       condition: event.body == "aa"
       action:
         run_job_template:
-          name: "test-playbook" # awx/aap name job template
+          name: "test-playbook"
+          organization: "Default"
+    - name: say goodbye and hello with worflow
+      condition: event.body == "ee"
+      action:
+        run_job_template:
+          name: "test-workflow"
+          organization: "Default"
+    - name: common action
+      condition: "'ii' in event.body or 'oo' in event.body"
+      action:
+        run_job_template:
+          name: "common-playbook" # awx/aap name job template for both conditions
           organization: "Default"

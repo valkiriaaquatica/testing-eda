@@ -1,0 +1,6 @@
+- name: say ii or oo
+  hosts: localhost
+  gather_facts: false
+  tasks: 
+    - debug:
+        msg: "i am executen when ii or oo appered"
