@@ -1,15 +1,15 @@
 - name: Listen vents on a webhook
   hosts: all
   sources:
-    - ansible.eda.webhook:
-        host: 0.0.0.0
-        port: 5000
+    - ansible.eda.kafka:
+        host: 192.168.1.106
+        port: 9092
+        topic: my-topic
+        group_id:
   rules:
     - name: say hello
-      condition: event.payload.message == "Ansible is cool"
+      condition: event.body == "aa"
       action:
         run_job_template:
           name: "test-playbook" # awx/aap name job template
           organization: "Default"
-        #run_playbook:
-         # name: say-what.yml
