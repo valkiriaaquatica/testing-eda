@@ -16,7 +16,7 @@
     - name: say goodbye and hello with worflow
       condition: event.body == "ee"
       action:
-        run_job_template:
+        run_workflow_template:
           name: "test-workflow"
           organization: "Default"
     - name: common action
