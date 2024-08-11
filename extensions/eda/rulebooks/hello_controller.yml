@@ -6,10 +6,10 @@
         port: 9092
         topic: my-topic
         group_id:
-      filters: # testing 4 eda image
-        - json_filter:
-            include_keys: ['message', 'value']
-        - dashes_to_underscores:
+      #filters: # testing 4 eda image
+       # - json_filter:
+        #    include_keys: ['message', 'value']
+        #- dashes_to_underscores:
   rules:
     - name: say hello
       condition: event.body == "aa"
@@ -17,6 +17,8 @@
         run_job_template:
           name: "test-playbook"
           organization: "Default"
+        extra_vars:
+          message_content: "{{ event.payload.message }}"
     - name: say goodbye and hello with worflow
       condition: event.body == "ee"
       action:
