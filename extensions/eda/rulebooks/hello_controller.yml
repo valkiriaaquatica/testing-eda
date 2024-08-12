@@ -35,3 +35,10 @@
         run_job_template:
           name: "common-playbook" # awx/aap name job template for both conditions
           organization: "Default"
+
+      #condition: "'a' in event.payload.message"
+      #condition: event.payload.alerts[0].status == "firing" # para plugin de alertmanager
+      #condition: event.payload.alerts[0].status == "firing" # con el ansible.eda.webhook
+      #condition: event.body == "aa"
+      #condition: event.payload.message == "aa" # postman
+      #condition: event.payload.message > 3
