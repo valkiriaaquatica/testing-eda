@@ -6,3 +6,10 @@
         msg: "Thank you i am say-waht"
     - debug: 
         msg: "i am the payload {{ message_content }}"
+      ignore_errors: true
+    - debug:
+        msg: "printint ansible eda vars: {{ ansible_eda }}"
+      ignore_errors: true
+    - debug:
+        msg: "printint ansible eda vars: {{ ansible_eda.event.payload.message }}"
+      ignore_errors: true
