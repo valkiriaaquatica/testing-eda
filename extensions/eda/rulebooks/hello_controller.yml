@@ -17,8 +17,6 @@
         run_job_template:
           name: "test-playbook"
           organization: "Default"
-        extra_vars:
-          message_content: "{{ event.payload.message }}"
     - name: say goodbye and hello with worflow
       condition: event.body == "ee"
       action:
