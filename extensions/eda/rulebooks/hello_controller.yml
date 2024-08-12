@@ -1,11 +1,15 @@
 - name: Listen vents on a webhook
   hosts: all
   sources:
-    - ansible.eda.kafka:
-        host: 192.168.1.45
-        port: 9092
-        topic: my-topic
-        group_id:
+    - name: webhook
+      ansible.eda.webhook:
+        host: 0.0.0.0
+        port: 5000
+    #- ansible.eda.kafka:
+     #   host: 192.168.1.45
+      #  port: 9092
+       # topic: my-topic
+        # group_id:
       #filters: # testing 4 eda image
        # - json_filter:
         #    include_keys: ['message', 'value']
