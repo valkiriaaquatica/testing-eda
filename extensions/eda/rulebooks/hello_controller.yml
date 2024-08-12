@@ -1,34 +1,30 @@
 - name: Listen vents on a webhook
   hosts: all
   sources:
-    - name: webhook
-      ansible.eda.webhook:
-        host: 0.0.0.0
-        port: 5000
-    #- ansible.eda.kafka:
-     #   host: 192.168.1.45
-      #  port: 9092
-       # topic: my-topic
-        # group_id:
+    - ansible.eda.kafka:
+        host: 192.168.1.45
+        port: 9092
+        topic: my-topic
+        group_id:
       #filters: # testing 4 eda image
        # - json_filter:
         #    include_keys: ['message', 'value']
         #- dashes_to_underscores:
   rules:
     - name: say hello
-      condition: event.payload.message == "aa"
+      condition: event.body == "aa"
       action:
         run_job_template:
           name: "test-playbook"
           organization: "Default"
     - name: say goodbye and hello with worflow
-      condition: event.payload.message == "ee"
+      condition: event.body == "ee"
       action:
         run_workflow_template:
           name: "test-workflow"
           organization: "Default"
     - name: common action
-      condition: "'ii' in event.payload.message or 'oo' in event.payload.message"
+      condition: "'ii' in event.body or 'oo' in event.body"
       action:
         run_job_template:
           name: "common-playbook" # awx/aap name job template for both conditions
