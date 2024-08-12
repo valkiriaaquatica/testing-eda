@@ -23,7 +23,6 @@
           organization: "Default"
           extra_vars:
             message_content: "{{ event.payload.message }}"
-          name: ansible.eda.hello
     - name: say goodbye and hello with worflow
       condition: event.payload.message == "ee"
       action:
