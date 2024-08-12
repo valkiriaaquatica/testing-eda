@@ -16,19 +16,19 @@
         #- dashes_to_underscores:
   rules:
     - name: say hello
-      condition: event.body == "aa"
+      condition: event.payload.message == "aa"
       action:
         run_job_template:
           name: "test-playbook"
           organization: "Default"
     - name: say goodbye and hello with worflow
-      condition: event.body == "ee"
+      condition: event.payload.message == "ee"
       action:
         run_workflow_template:
           name: "test-workflow"
           organization: "Default"
     - name: common action
-      condition: "'ii' in event.body or 'oo' in event.body"
+      condition: "'ii' in event.payload.message or 'oo' in event.payload.message"
       action:
         run_job_template:
           name: "common-playbook" # awx/aap name job template for both conditions
