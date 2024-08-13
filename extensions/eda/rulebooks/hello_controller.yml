@@ -14,6 +14,13 @@
        # - json_filter:
         #    include_keys: ['message', 'value']
         #- dashes_to_underscores:
+    #- name: Kubernetes Event Source
+     # ansible.eda.kubernetes:
+      #  api: CoreV1Api
+#        method: list_pod_for_all_namespaces
+       # method: list_namespaced_pod
+        #params:
+         # namespace: "metallb-system"
   rules:
     - name: say hello
       condition: event.payload.message == "aa"
