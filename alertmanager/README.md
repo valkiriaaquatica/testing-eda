@@ -1,0 +1,2 @@
+# Quick example to deploy a prometheus server using Python 
+The goal is to deploy an easy service using python and with metrics able to Prometheus to rasp the data. Then configure rules, prometheus and alertmanager to send webhooks to Ansible Rulebook webhook.
