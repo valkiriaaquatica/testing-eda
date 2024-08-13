@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nameyouwant
+  namespace: eda
+spec:
+  type: LoadBalancer # metallb with arp protocol to spread the IP address
+  selector:
+    job-id: 7-36  # assign first a identify label to the pod in case there are a lot
+  ports:
+    - protocol: TCP
+      port: 80 
+      targetPort: 5000  #  get the port from the pod of the activation job
