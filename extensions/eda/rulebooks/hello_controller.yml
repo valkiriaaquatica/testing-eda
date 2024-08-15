@@ -21,9 +21,13 @@
         run_job_template:
           name: "test-playbook"
           organization: "Default"
+          # use ansible_eda when running on awx, is defualt variable 
+          # that uses awx to get info from rulebook, this variable doesn't exist
+          # when you run for exmaple run_Playbook, check more on 
+          # the official docs https://ansible.readthedocs.io/projects/rulebook/en/stable/actions.html#run-job-template
           extra_vars:
-            message_content: "{{ event.payload.message }}"
-            payload_content: "{{ event.payload }}"
+            message_content: "{{ ansible_eda.event.payload.message }}"
+            payload_content: "{{ ansible_eda.event.payload }}"
     - name: say goodbye and hello with worflow
       condition: event.payload.message == "ee"
       action:
