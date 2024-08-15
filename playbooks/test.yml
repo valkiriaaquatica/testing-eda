@@ -4,6 +4,8 @@
   tasks: 
     - debug:
         msg: "Thank you i am say-waht"
+    - debug:
+        msg: "Printing all the variable that was in payload that receveid EDA: {{ ansible_eda }}"
     # do a post request with message variable 
     - debug:
         msg: "I am ansible eda {{ ansible_eda  }}"
