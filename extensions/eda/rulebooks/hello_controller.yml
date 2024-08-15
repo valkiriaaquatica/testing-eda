@@ -25,7 +25,7 @@
           # that uses awx to get info from rulebook, this variable doesn't exist
           # when you run for exmaple run_Playbook, check more on 
           # the official docs https://ansible.readthedocs.io/projects/rulebook/en/stable/actions.html#run-job-template
-          extra_vars:
+          job_args:
             message_content: "{{ ansible_eda.event.payload.message }}"
             payload_content: "{{ ansible_eda.event.payload }}"
     - name: say goodbye and hello with worflow
@@ -34,9 +34,9 @@
         run_workflow_template:
           name: "test-workflow"
           organization: "Default"
-          extra_vars:
-            message_content: "{{ event.payload.message }}"
-            payload_content: "{{ event.payload }}"
+          job_args:
+            message_content: "{{ ansible_eda.event.payload.message }}"
+            payload_content: "{{ ansible_eda.event.payload }}"
 
       #condition: "'a' in event.payload.message"
       #condition: event.payload.alerts[0].status == "firing" # para plugin de alertmanager
