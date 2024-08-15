@@ -29,12 +29,6 @@
         run_workflow_template:
           name: "test-workflow"
           organization: "Default"
-    - name: common action
-      condition: "'ii' in event.payload.message or 'oo' in event.payload.message"
-      action:
-        run_job_template:
-          name: "common-playbook" # awx/aap name job template for both conditions
-          organization: "Default"
 
       #condition: "'a' in event.payload.message"
       #condition: event.payload.alerts[0].status == "firing" # para plugin de alertmanager
