@@ -15,7 +15,7 @@
         #    include_keys: ['message', 'value']
         #- dashes_to_underscores:
   rules:
-    - name: say hello
+    - name: say hello from job template
       condition: event.payload.message == "aa"
       action:
         run_job_template:
@@ -27,18 +27,18 @@
           # the official docs https://ansible.readthedocs.io/projects/rulebook/en/stable/actions.html#run-job-template
           job_args:
             extra_vars:
-              message_content: "{{ ansible_eda.event.payload.message }}"
-              payload_content: "{{ ansible_eda.event.payload }}"
-    - name: say goodbye and hello with worflow
-      condition: event.payload.message == "ee"
+              message_content: "{{ event.payload.message }}"
+              payload_content: "{{ event.payload }}"
+    - name: say hello from workflow template
+      condition: event.payload.message == "uu"
       action:
         run_workflow_template:
           name: "test-workflow"
           organization: "Default"
           job_args:
             extra_vars:
-              message_content: "{{ ansible_eda.event.payload.message }}"
-              payload_content: "{{ ansible_eda.event.payload }}"
+              message_content: "{{ ansible_eda.payload.message }}"
+              payload_content: "{{ ansible_eda.payload }}"
 
       #condition: "'a' in event.payload.message"
       #condition: event.payload.alerts[0].status == "firing" # para plugin de alertmanager
