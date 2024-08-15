@@ -1,6 +1,0 @@
-- name: say bye bie
-  hosts: localhost
-  gather_facts: false
-  tasks: 
-    - debug:
-        msg: "i say goodbye"
