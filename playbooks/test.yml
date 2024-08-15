@@ -4,12 +4,9 @@
   tasks: 
     - debug:
         msg: "Thank you i am say-waht"
-    - debug: 
-        msg: "i am the payload {{ message_content }}"
-      ignore_errors: true
+    # do a post request with message variable 
     - debug:
-        msg: "printint ansible eda vars: {{ ansible_eda }}"
-      ignore_errors: true
+        msg: "I am variable message from eda original POST {{ event.payload.message }}"
+    # do a post request with number variable 
     - debug:
-        msg: "printint ansible eda vars: {{ ansible_eda.event.payload.message }}"
-      ignore_errors: true
+        msg: "I am variable number from eda original POST {{ event.payload.number }}"
