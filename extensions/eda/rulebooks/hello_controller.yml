@@ -15,6 +15,14 @@
         #    include_keys: ['message', 'value']
         #- dashes_to_underscores:
   rules:
+    - name: say hello
+      condition: event.payload.message == "ee"
+      action:
+        run_playbook:
+          name: say-what.yml
+          extra_vars:
+            message_content: "{{ event.payload.message }}"
+            payload_content: "{{ event.payload }}"
     - name: say hello from job template
       condition: event.payload.message == "aa"
       action:
@@ -37,8 +45,8 @@
           organization: "Default"
           job_args:
             extra_vars:
-              message_content: "{{ ansible_eda.payload.message }}"
-              payload_content: "{{ ansible_eda.payload }}"
+              message_content: "{{ event.payload.message }}"
+              payload_content: "{{ event.payload }}"
 
       #condition: "'a' in event.payload.message"
       #condition: event.payload.alerts[0].status == "firing" # para plugin de alertmanager
