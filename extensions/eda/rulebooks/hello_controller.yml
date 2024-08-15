@@ -23,6 +23,7 @@
           organization: "Default"
           extra_vars:
             message_content: "{{ event.payload.message }}"
+            payload_content: "{{ event.payload }}"
     - name: say goodbye and hello with worflow
       condition: event.payload.message == "ee"
       action:

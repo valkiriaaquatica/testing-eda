@@ -6,7 +6,7 @@
         msg: "Thank you i am say-waht"
     # do a post request with message variable 
     - debug:
-        msg: "I am variable message from eda original POST {{ event.payload.message }}"
+        msg: "I am variable message from eda original POST {{ message_content }}"
     # do a post request with number variable 
     - debug:
-        msg: "I am variable number from eda original POST {{ event.payload.number }}"
+        msg: "I am all the variables of the post payload {{ payload_content }}"
