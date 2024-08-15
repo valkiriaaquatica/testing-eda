@@ -30,6 +30,9 @@
         run_workflow_template:
           name: "test-workflow"
           organization: "Default"
+          extra_vars:
+            message_content: "{{ event.payload.message }}"
+            payload_content: "{{ event.payload }}"
 
       #condition: "'a' in event.payload.message"
       #condition: event.payload.alerts[0].status == "firing" # para plugin de alertmanager
